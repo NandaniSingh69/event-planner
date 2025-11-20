@@ -31,8 +31,16 @@ const eventSchema = new mongoose.Schema({
     ref: 'User',
   }],
   rsvps: [rsvpSchema],
+  comments: [commentSchema],
 }, { timestamps: true });
 
 const Event = mongoose.model('Event', eventSchema);
+
+const commentSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  message: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
 
 module.exports = Event;

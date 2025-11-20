@@ -19,6 +19,9 @@ mongoose.connect(process.env.MONGO_URI)
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+const eventRoutes = require('./routes/events');
+app.use('/api/events', eventRoutes);
+
 // Basic test route
 app.get('/', (req, res) => {
   res.send('Collaborative Event Planner API is running');
